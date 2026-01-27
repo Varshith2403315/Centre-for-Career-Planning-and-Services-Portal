@@ -8,7 +8,6 @@ import { useMenuClose } from "../utils/closeMenuEffect";
 function AlumniCard({ alum, index, authUser, onEditAlumni, onDeleteAlumni }) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const menuRef = useRef(null);
-  console.log(alum)
 
   const handleContextMenuToggle = () => {
     setIsMenuOpen(!isMenuOpen);
