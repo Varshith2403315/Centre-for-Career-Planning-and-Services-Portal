@@ -27,71 +27,71 @@ const CreateJob = () => {
   };
 
   const handleSubmit = async (e) => {
-  e.preventDefault();
+    e.preventDefault();
 
-  // Get today's date at start of day (midnight)
-  const today = new Date();
-  today.setHours(0, 0, 0, 0);
+    // Get today's date at start of day (midnight)
+    const today = new Date();
+    today.setHours(0, 0, 0, 0);
 
-  // Parse deadlines if present (they can be empty strings)
-  const deadlineDate = form.Deadline ? new Date(form.Deadline) : null;
-  const expiryDate = form.Expiry ? new Date(form.Expiry) : null;
+    // Parse deadlines if present (they can be empty strings)
+    const deadlineDate = form.Deadline ? new Date(form.Deadline) : null;
+    const expiryDate = form.Expiry ? new Date(form.Expiry) : null;
 
-  // Check deadline date validity
-  if (deadlineDate && deadlineDate < today) {
-    toast.error("Application Deadline cannot be before today's date.");
-    setSubmitting(false);
-    return;
-  }
+    // Check deadline date validity
+    if (deadlineDate && deadlineDate < today) {
+      toast.error("Application Deadline cannot be before today's date.");
+      setSubmitting(false);
+      return;
+    }
 
-  // Check expiry date validity
-  if (expiryDate && expiryDate < today) {
-    toast.error("Post Expiry Date cannot be before today's date.");
-    setSubmitting(false);
-    return;
-  }
+    // Check expiry date validity
+    if (expiryDate && expiryDate < today) {
+      toast.error("Post Expiry Date cannot be before today's date.");
+      setSubmitting(false);
+      return;
+    }
 
-  // Optional: If you want to ensure Expiry date is after or equal to Deadline
-  if (deadlineDate && expiryDate && expiryDate < deadlineDate) {
-    toast.error("Post Expiry Date cannot be before Application Deadline.");
-    setSubmitting(false);
-    return;
-  }
+    // Optional: If you want to ensure Expiry date is after or equal to Deadline
+    if (deadlineDate && expiryDate && expiryDate < deadlineDate) {
+      toast.error("Post Expiry Date cannot be before Application Deadline.");
+      setSubmitting(false);
+      return;
+    }
 
-  setSubmitting(true);
-  try {
-    const token = localStorage.getItem("ccps-token");
-    await createJobPosting(form, token);
-    toast.success("Job created successfully!");
-    setForm({
-      jobTitle: "",
-      jobDescription: "",
-      Company: "",
-      requiredSkills: "",
-      Type: "on-campus",
-      batch: "",
-      Deadline: "",
-      ApplicationLink: "",
-      Expiry: "",
-      author: "",
-      relevanceScore: "",
-    });
-  } catch (err) {
-    console.error(err);
-    toast.error(err?.response?.data?.message || "Failed to create job");
-  } finally {
-    setSubmitting(false);
-  }
-};
+    setSubmitting(true);
+    try {
+      const token = localStorage.getItem("ccps-token");
+      await createJobPosting(form, token);
+      toast.success("Job created successfully!");
+      setForm({
+        jobTitle: "",
+        jobDescription: "",
+        Company: "",
+        requiredSkills: "",
+        Type: "on-campus",
+        batch: "",
+        Deadline: "",
+        ApplicationLink: "",
+        Expiry: "",
+        author: "",
+        relevanceScore: "",
+      });
+    } catch (err) {
+      console.error(err);
+      toast.error(err?.response?.data?.message || "Failed to create job");
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-50 dark:bg-black">
       <Sidebar />
 
       {/* Main Content */}
       <main className="flex-1 p-6 pt-20 md:pt-8 w-full">
-        <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
           {/* Header */}
           <div className="bg-[#0c4a42] p-6">
             <h1 className="text-2xl font-bold text-white">New Job Posting</h1>
@@ -104,7 +104,7 @@ const CreateJob = () => {
               <div>
                 <label
                   htmlFor="jobTitle"
-                  className="block text-sm font-medium text-gray-700 mb-1"
+                  className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1"
                 >
                   Job Title
                 </label>
@@ -117,9 +117,9 @@ const CreateJob = () => {
                   onChange={handleChange}
                   placeholder="e.g. Frontend Engineer"
                   className="
-                    w-full border border-gray-300 rounded-lg 
-                    px-4 py-2 text-gray-900 
-                    shadow-sm 
+                    w-full border border-gray-300 dark:border-gray-600 rounded-lg 
+                    px-4 py-2 text-gray-900 dark:text-white
+                    shadow-sm dark:bg-gray-700
                     focus:outline-none 
                     focus:ring-2 focus:ring-green-600 focus:border-green-600
                     transition
@@ -169,9 +169,9 @@ const CreateJob = () => {
                 onChange={handleChange}
                 placeholder="Describe role, responsibilities, perks…"
                 className="
-                  w-full border border-gray-300 rounded-lg 
-                  px-4 py-2 text-gray-900 
-                  shadow-sm resize-none
+                  w-full border border-gray-300 dark:border-gray-600 rounded-lg 
+                  px-4 py-2 text-gray-900 dark:text-white
+                  shadow-sm resize-none dark:bg-gray-700
                   focus:outline-none 
                   focus:ring-2 focus:ring-green-600 focus:border-green-600
                   transition
@@ -389,7 +389,7 @@ const CreateJob = () => {
                 type="button"
                 onClick={() => navigate("/admin/jobs")}
                 disabled={submitting}
-                className="px-6 py-2 bg-gray-200 text-gray-700 rounded-lg hover:bg-gray-300 disabled:opacity-50 transition"
+                className="px-6 py-2 bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-200 rounded-lg hover:bg-gray-300 dark:hover:bg-gray-600 disabled:opacity-50 transition"
               >
                 Cancel
               </button>

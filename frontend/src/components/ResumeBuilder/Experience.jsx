@@ -2,9 +2,9 @@ import React from 'react';
 
 function Experience({ formData, handleArrayFieldChange, addItem, removeItem }) {
     return (
-        <div className="bg-white p-6 rounded-2xl shadow-md mb-6">
+        <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md mb-6 transition-colors duration-200">
             <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold text-slate-700">Experience</h2>
+                <h2 className="text-xl font-semibold text-slate-700 dark:text-gray-200">Experience</h2>
                 <button
                     type="button"
                     onClick={() => addItem('experience')}
@@ -17,7 +17,7 @@ function Experience({ formData, handleArrayFieldChange, addItem, removeItem }) {
             {formData.experience.map((exp, index) => (
                 <div
                     key={index}
-                    className="mb-4 p-4 border border-slate-200 rounded-2xl bg-slate-50 relative"
+                    className="mb-4 p-4 border border-slate-200 dark:border-gray-600 rounded-2xl bg-slate-50 dark:bg-gray-700 relative"
                 >
                     {formData.experience.length > 1 && (
                         <button
@@ -31,7 +31,7 @@ function Experience({ formData, handleArrayFieldChange, addItem, removeItem }) {
 
                     <div className="space-y-4">
                         <div>
-                            <label className="block text-sm font-medium text-slate-600 mb-1">
+                            <label className="block text-sm font-medium text-slate-600 dark:text-gray-300 mb-1">
                                 Company<span className="text-red-500">*</span>
                             </label>
                             <input
@@ -40,12 +40,12 @@ function Experience({ formData, handleArrayFieldChange, addItem, removeItem }) {
                                 value={exp.company}
                                 onChange={(e) => handleArrayFieldChange('experience', index, e)}
                                 required
-                                className="w-full p-2 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                                className="w-full p-2 border border-slate-300 dark:border-gray-500 rounded focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-600 dark:text-white"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-600 mb-1">
+                            <label className="block text-sm font-medium text-slate-600 dark:text-gray-300 mb-1">
                                 Position<span className="text-red-500">*</span>
                             </label>
                             <input
@@ -54,12 +54,12 @@ function Experience({ formData, handleArrayFieldChange, addItem, removeItem }) {
                                 value={exp.position}
                                 onChange={(e) => handleArrayFieldChange('experience', index, e)}
                                 required
-                                className="w-full p-2 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                                className="w-full p-2 border border-slate-300 dark:border-gray-500 rounded focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-600 dark:text-white"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-600 mb-1">
+                            <label className="block text-sm font-medium text-slate-600 dark:text-gray-300 mb-1">
                                 Location<span className="text-red-500">*</span>
                             </label>
                             <input
@@ -68,12 +68,12 @@ function Experience({ formData, handleArrayFieldChange, addItem, removeItem }) {
                                 value={exp.location}
                                 onChange={(e) => handleArrayFieldChange('experience', index, e)}
                                 required
-                                className="w-full p-2 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                                className="w-full p-2 border border-slate-300 dark:border-gray-500 rounded focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-600 dark:text-white"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-600 mb-1">
+                            <label className="block text-sm font-medium text-slate-600 dark:text-gray-300 mb-1">
                                 Description<span className="text-red-500">*</span>
                             </label>
                             <textarea
@@ -83,12 +83,12 @@ function Experience({ formData, handleArrayFieldChange, addItem, removeItem }) {
                                 required
                                 rows="3"
                                 placeholder="Describe your responsibilities and achievements"
-                                className="w-full p-2 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                                className="w-full p-2 border border-slate-300 dark:border-gray-500 rounded focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-600 dark:text-white"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-600 mb-1">
+                            <label className="block text-sm font-medium text-slate-600 dark:text-gray-300 mb-1">
                                 Start Date<span className="text-red-500">*</span>
                             </label>
                             <input
@@ -97,12 +97,12 @@ function Experience({ formData, handleArrayFieldChange, addItem, removeItem }) {
                                 value={exp.startDate}
                                 onChange={(e) => handleArrayFieldChange('experience', index, e)}
                                 required
-                                className="w-full p-2 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                                className="w-full p-2 border border-slate-300 dark:border-gray-500 rounded focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-600 dark:text-white"
                             />
                         </div>
 
                         <div>
-                            <label className="block text-sm font-medium text-slate-600 mb-1">
+                            <label className="block text-sm font-medium text-slate-600 dark:text-gray-300 mb-1">
                                 End Date (or Current)<span className="text-red-500">*</span>
                             </label>
                             <input
@@ -110,7 +110,7 @@ function Experience({ formData, handleArrayFieldChange, addItem, removeItem }) {
                                 name="endDate"
                                 value={exp.endDate}
                                 onChange={(e) => handleArrayFieldChange('experience', index, e)}
-                                className="w-full p-2 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+                                className="w-full p-2 border border-slate-300 dark:border-gray-500 rounded focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-600 dark:text-white"
                             />
                         </div>
                     </div>

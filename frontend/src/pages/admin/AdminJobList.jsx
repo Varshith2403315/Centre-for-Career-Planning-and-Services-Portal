@@ -29,7 +29,7 @@ const AdminJobList = () => {
     <div>
       <Sidebar />
       <div className="p-6">
-        <h2 className="text-2xl font-semibold mb-4">All Job Postings</h2>
+        <h2 className="text-2xl font-semibold mb-4 dark:text-white">All Job Postings</h2>
 
         {jobs.length === 0 && (
           <p className="text-red-500">No job data found or API failed. Check console.</p>
@@ -37,13 +37,13 @@ const AdminJobList = () => {
 
         <div className="grid gap-4">
           {jobs.map((job) => (
-            <div key={job._id} className="bg-white rounded-xl shadow-md p-4">
-              <h3 className="text-xl font-bold">{job.jobTitle}</h3>
-              <p>
+            <div key={job._id} className="bg-white dark:bg-gray-800 rounded-xl shadow-md p-4">
+              <h3 className="text-xl font-bold dark:text-gray-100">{job.jobTitle}</h3>
+              <p className="dark:text-gray-300">
                 {job.Company} — <span className="italic">{job.Type}</span>
               </p>
-              <p>Batch: {job.batch}</p>
-              <p>Deadline: {new Date(job.Deadline).toLocaleDateString()}</p>
+              <p className="dark:text-gray-300">Batch: {job.batch}</p>
+              <p className="dark:text-gray-300">Deadline: {new Date(job.Deadline).toLocaleDateString()}</p>
               <button
                 onClick={() => navigate(`/admin/job/${job._id}/applicants`)}
                 className="mt-2 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700"

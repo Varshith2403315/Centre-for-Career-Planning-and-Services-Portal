@@ -14,12 +14,12 @@ const DiscussionForum = () => {
   }, [threadAdded]); // reload when a thread is added
 
   return (
-    <div className="flex min-h-screen bg-[#f9fafb]">
+    <div className="flex min-h-screen bg-[#f9fafb] dark:bg-black">
       <Sidebar />
       <main className="flex-1 px-2 sm:px-4 md:px-8 py-4 flex flex-col">
         <div className="flex flex-col flex-1 h-full">
           <div className="flex flex-wrap justify-between items-center gap-4 mb-6">
-            <h1 className="text-3xl font-bold text-[#0c4a42] mt-14 md:mt-0">Discussion Forum</h1>
+            <h1 className="text-3xl font-bold text-[#0c4a42] dark:text-emerald-400 mt-14 md:mt-0">Discussion Forum</h1>
             <button
               className="bg-[#036756] hover:bg-[#025d4a] text-white font-medium px-6 py-2 rounded-lg shadow-md transition"
               onClick={() => setShowAddThread(true)}
@@ -27,13 +27,13 @@ const DiscussionForum = () => {
               + Add Thread
             </button>
           </div>
-          <div className="flex-1 flex flex-col bg-white rounded-xl shadow p-4 sm:p-6 min-h-[300px]">
+          <div className="flex-1 flex flex-col bg-white dark:bg-gray-800 rounded-xl shadow p-4 sm:p-6 min-h-[300px]">
             {threads.length === 0 ? (
               <div className="flex flex-col items-center justify-center flex-1 py-16">
-                <h2 className="text-2xl font-bold text-[#036756] mb-2">
+                <h2 className="text-2xl font-bold text-[#036756] dark:text-emerald-300 mb-2">
                   Welcome to the Discussion Forum
                 </h2>
-                <p className="text-gray-700 text-lg mb-6">
+                <p className="text-gray-700 dark:text-gray-300 text-lg mb-6">
                   Be the first to start a conversation. Click the{" "}
                   <span className="font-semibold">+ Add Thread</span> button to get started!
                 </p>

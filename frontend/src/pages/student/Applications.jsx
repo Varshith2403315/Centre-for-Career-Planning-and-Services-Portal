@@ -1,7 +1,7 @@
 import { toast } from "react-hot-toast";
 import { useEffect, useState } from "react";
 // Ensure fetchAppliedJobs is imported from your API service file
-import { fetchJobs, fetchMyApplications, fetchAppliedJobs } from "../../api/useApply"; 
+import { fetchJobs, fetchMyApplications, fetchAppliedJobs } from "../../api/useApply";
 import Sidebar from "../../components/Sidebar";
 import ApplyModal from "../../components/ApplyModel";
 import { saveJob } from "../../api/useSavedJobs";
@@ -69,7 +69,7 @@ const Applications = () => {
           address: authUser.address,
         }));
       }).finally(() => setLoading(false));
-    };
+  };
 
   useEffect(() => {
     loadAll();
@@ -153,14 +153,14 @@ const Applications = () => {
 
   if (loading)
     return (
-      <div className="flex min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      <div className="flex min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 dark:bg-none dark:bg-black">
         <Sidebar />
         <div className="flex-1 flex items-center justify-center pt-20 sm:pt-24">
           <div className="text-center">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-white rounded-2xl shadow-lg mb-4">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-white dark:bg-gray-800 rounded-2xl shadow-lg mb-4">
               <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-600"></div>
             </div>
-            <p className="text-gray-600 font-medium">Loading amazing opportunities...</p>
+            <p className="text-gray-600 dark:text-gray-400 font-medium">Loading amazing opportunities...</p>
             <p className="text-gray-400 text-sm mt-1">Please wait a moment</p>
           </div>
         </div>
@@ -168,29 +168,27 @@ const Applications = () => {
     );
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
+    <div className="flex min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:bg-none dark:bg-black">
       <Sidebar />
       <main className="flex-1 pt-20 md:pt-8 px-4 sm:px-6 lg:px-8 w-full">
-        
+
         {/* Tab Navigation */}
         <div className="flex gap-4 mb-8 border-b border-gray-200">
           <button
             onClick={() => setActiveTab("jobs")}
-            className={`pb-2 px-3 font-semibold ${
-              activeTab === "jobs"
-                ? "text-[#13665b] border-b-2 border-[#13665b]"
-                : "text-gray-500"
-            }`}
+            className={`pb-2 px-3 font-semibold ${activeTab === "jobs"
+              ? "text-[#13665b] border-b-2 border-[#13665b]"
+              : "text-gray-500 dark:text-gray-400"
+              }`}
           >
             Job Opportunities
           </button>
           <button
             onClick={() => setActiveTab("applied")}
-            className={`pb-2 px-3 font-semibold ${
-              activeTab === "applied"
-                ? "text-[#13665b] border-b-2 border-[#13665b]"
-                : "text-gray-500"
-            }`}
+            className={`pb-2 px-3 font-semibold ${activeTab === "applied"
+              ? "text-[#13665b] border-b-2 border-[#13665b]"
+              : "text-gray-500"
+              }`}
           >
             My Applied Jobs
           </button>
@@ -204,8 +202,8 @@ const Applications = () => {
               <div className="flex items-center mb-6">
                 <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-blue-600 rounded-full mr-4"></div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-900">My Applied Jobs</h2>
-                  <p className="text-gray-600 text-sm">A dedicated list of all jobs you have applied for</p>
+                  <h2 className="text-2xl font-bold text-gray-900 dark:text-white">My Applied Jobs</h2>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">A dedicated list of all jobs you have applied for</p>
                 </div>
                 <div className="ml-auto">
                   <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
@@ -214,23 +212,23 @@ const Applications = () => {
                 </div>
               </div>
               {appliedJobsList.length === 0 ? (
-                <div className="flex flex-col items-center justify-center py-8 bg-white border border-gray-200 rounded-xl">
+                <div className="flex flex-col items-center justify-center py-8 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl">
                   <p className="text-gray-500 text-lg font-medium">No applied jobs found.</p>
                   <p className="text-gray-400 text-sm mt-1">Apply to a job to see it listed here!</p>
                 </div>
               ) : (
                 <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
                   {appliedJobsList.map((job) => (
-                    <JobCard 
-                      key={job._id} 
-                      job={{ 
-                        ...job, 
-                        status: job.applicationStatus || 'Pending', 
+                    <JobCard
+                      key={job._id}
+                      job={{
+                        ...job,
+                        status: job.applicationStatus || 'Pending',
                         applied: true,
                         Type: job.Type || 'Off-Campus' // Default type if missing
-                      }} 
+                      }}
                       myApps={appliedJobsList} // Pass the dedicated list for status check
-                      isAppliedJob={true}   
+                      isAppliedJob={true}
                     />
                   ))}
                 </div>
@@ -243,10 +241,10 @@ const Applications = () => {
             <div className="mb-10">
               <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6">
                 <div>
-                  <h1 className="text-4xl font-bold text-gray-900 mb-2">
-                    Job <span className="text-[#13665b]">Opportunities</span>
+                  <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
+                    Job <span className="text-[#13665b] dark:text-emerald-400">Opportunities</span>
                   </h1>
-                  <p className="text-gray-600 text-lg">Discover your next career adventure</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-lg">Discover your next career adventure</p>
                 </div>
                 <div className="relative w-full lg:w-80">
                   <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
@@ -267,7 +265,7 @@ const Applications = () => {
                   <input
                     type="text"
                     placeholder="Search job titles..."
-                    className="w-full pl-12 pr-4 py-3.5 bg-white border border-gray-200 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#13665b] focus:border-transparent text-gray-900 placeholder-gray-500 transition-all duration-200"
+                    className="w-full pl-12 pr-4 py-3.5 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl shadow-sm focus:outline-none focus:ring-2 focus:ring-[#13665b] focus:border-transparent text-gray-900 dark:text-white placeholder-gray-500 transition-all duration-200"
                     value={search}
                     onChange={(e) => setSearch(e.target.value)}
                   />
@@ -290,7 +288,7 @@ const Applications = () => {
               </div>
 
               <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 mt-8">
-                <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mr-3">
                       <svg
@@ -308,12 +306,12 @@ const Applications = () => {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-gray-900">{jobs.length}</p>
+                      <p className="text-2xl font-bold text-gray-900 dark:text-white">{jobs.length}</p>
                       <p className="text-xs text-gray-500">Total Jobs</p>
                     </div>
                   </div>
                 </div>
-                <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-emerald-100 rounded-lg flex items-center justify-center mr-3">
                       <svg
@@ -331,12 +329,12 @@ const Applications = () => {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-gray-900">{grouped.onCampus.length}</p>
+                      <p className="text-2xl font-bold text-gray-900 dark:text-white">{grouped.onCampus.length}</p>
                       <p className="text-xs text-gray-500">On-Campus</p>
                     </div>
                   </div>
                 </div>
-                <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mr-3">
                       <svg
@@ -354,12 +352,12 @@ const Applications = () => {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-gray-900">{grouped.offCampus.length}</p>
+                      <p className="text-2xl font-bold text-gray-900 dark:text-white">{grouped.offCampus.length}</p>
                       <p className="text-xs text-gray-500">Off-Campus</p>
                     </div>
                   </div>
                 </div>
-                <div className="bg-white p-4 rounded-xl border border-gray-200 shadow-sm">
+                <div className="bg-white dark:bg-gray-800 p-4 rounded-xl border border-gray-200 dark:border-gray-700 shadow-sm">
                   <div className="flex items-center">
                     <div className="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mr-3">
                       <svg
@@ -372,7 +370,7 @@ const Applications = () => {
                       </svg>
                     </div>
                     <div>
-                      <p className="text-2xl font-bold text-gray-900">{myApps.length}</p>
+                      <p className="text-2xl font-bold text-gray-900 dark:text-white">{myApps.length}</p>
                       <p className="text-xs text-gray-500">Applied</p>
                     </div>
                   </div>
@@ -385,8 +383,8 @@ const Applications = () => {
                 <div className="flex items-center mb-6">
                   <div className="w-1 h-8 bg-gradient-to-b from-emerald-500 to-emerald-600 rounded-full mr-4"></div>
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-900">On-Campus Opportunities</h2>
-                    <p className="text-gray-600 text-sm">Jobs available within your campus</p>
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">On-Campus Opportunities</h2>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">Jobs available within your campus</p>
                   </div>
                   <div className="ml-auto">
                     <span className="bg-emerald-100 text-emerald-800 text-sm font-medium px-3 py-1 rounded-full">
@@ -401,8 +399,8 @@ const Applications = () => {
                 <div className="flex items-center mb-6">
                   <div className="w-1 h-8 bg-gradient-to-b from-purple-500 to-purple-600 rounded-full mr-4"></div>
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-900">Off-Campus Opportunities</h2>
-                    <p className="text-gray-600 text-sm">External job opportunities</p>
+                    <h2 className="text-2xl font-bold text-gray-900 dark:text-white">Off-Campus Opportunities</h2>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">External job opportunities</p>
                   </div>
                   <div className="ml-auto">
                     <span className="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">

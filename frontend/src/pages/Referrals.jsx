@@ -103,32 +103,32 @@ function Referrals() {
   };
 
   return (
-    <div className="flex min-h-screen bg-[#f9fafb]">
+    <div className="flex min-h-screen bg-[#f9fafb] dark:bg-black">
       <Sidebar />
       <main className="flex-1 flex flex-col px-2 md:px-8 py-6">
-        <h1 className="text-3xl font-bold text-[#0c4a42] mb-8 mt-14 md:mt-0">Referral Request</h1>
+        <h1 className="text-3xl font-bold text-[#0c4a42] dark:text-emerald-400 mb-8 mt-14 md:mt-0">Referral Request</h1>
         <div className="flex-1 flex flex-col lg:flex-row gap-8">
 
           {/* Active Requests */}
-          <section className="flex-1 bg-white rounded-2xl shadow-md p-6 flex flex-col max-h-[85vh] overflow-y-auto">
-            <h2 className="text-xl font-semibold text-gray-700 border-b pb-2 mb-5">Active Requests</h2>
+          <section className="flex-1 bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6 flex flex-col max-h-[85vh] overflow-y-auto">
+            <h2 className="text-xl font-semibold text-gray-700 dark:text-gray-200 border-b dark:border-gray-700 pb-2 mb-5">Active Requests</h2>
             {referralList && referralList.length > 0 ? (
               <div className="flex flex-col gap-4">
                 {referralList.map((ref) => (
-                  <div key={ref._id} className="border border-gray-200 rounded-xl p-4 bg-white hover:shadow-sm transition relative flex flex-col md:flex-row justify-between items-start md:items-center">
+                  <div key={ref._id} className="border border-gray-200 dark:border-gray-700 rounded-xl p-4 bg-white dark:bg-gray-800 hover:shadow-sm transition relative flex flex-col md:flex-row justify-between items-start md:items-center">
                     <div className="flex-1">
-                      <h3 className="font-semibold text-lg mb-1 text-[#036756]">{ref.companyName}</h3>
-                      <p className="text-gray-700 text-base">Job ID: <span className="font-semibold">{ref.jobId}</span></p>
-                      <p className="text-gray-500 text-sm mt-1">Requested by: {ref.studentName}</p>
+                      <h3 className="font-semibold text-lg mb-1 text-[#036756] dark:text-emerald-300">{ref.companyName}</h3>
+                      <p className="text-gray-700 dark:text-gray-300 text-base">Job ID: <span className="font-semibold">{ref.jobId}</span></p>
+                      <p className="text-gray-500 dark:text-gray-400 text-sm mt-1">Requested by: {ref.studentName}</p>
                       {ref.createdAt && (
                         <p className="text-gray-400 text-xs">Posted on: {formatDate(ref.createdAt)}</p>
                       )}
                       {ref.referralLink && authUser.email === ref.studentEmail && (
-                        <div className="mt-2 rounded bg-emerald-50 px-2 py-1">
-                          <span className="text-emerald-700 font-semibold">Referral:</span>{" "}
+                        <div className="mt-2 rounded bg-emerald-50 dark:bg-emerald-900/30 px-2 py-1">
+                          <span className="text-emerald-700 dark:text-emerald-300 font-semibold">Referral:</span>{" "}
                           <a
                             href={formatUrl(ref.referralLink)}
-                            className="text-blue-600 underline break-all"
+                            className="text-blue-600 dark:text-blue-400 underline break-all"
                             target="_blank" rel="noopener noreferrer"
                           >{ref.referralLink}</a>
                           <p className="text-gray-400 text-xs">Provided by: {ref.alumniEmail}</p>
@@ -152,7 +152,7 @@ function Referrals() {
                             value={referralLinkInput}
                             onChange={(e) => setReferralLinkInput(e.target.value)}
                             placeholder="Enter referral link"
-                            className="flex-1 px-3 py-1 border border-gray-300 rounded-md focus:outline-none focus:ring-[1.5px] focus:ring-emerald-500 text-sm"
+                            className="flex-1 px-3 py-1 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md focus:outline-none focus:ring-[1.5px] focus:ring-emerald-500 text-sm"
                           />
                           <button
                             onClick={() => handleProvideReferral(ref._id)}
@@ -194,42 +194,42 @@ function Referrals() {
           </section>
 
           {/* Request a Referral / Info */}
-          <aside className="w-full lg:w-[350px] bg-white rounded-2xl shadow-md p-6">
-            <h2 className="text-xl font-semibold mb-5 border-b text-gray-700 pb-2">
+          <aside className="w-full lg:w-[350px] bg-white dark:bg-gray-800 rounded-2xl shadow-md p-6">
+            <h2 className="text-xl font-semibold mb-5 border-b dark:border-gray-700 text-gray-700 dark:text-gray-200 pb-2">
               {authUser.role === "student" ? "Request a Referral" : "Referral Information"}
             </h2>
             {authUser.role === "student" ? (
               <form onSubmit={handleRequestReferral} className="space-y-5">
                 <div>
-                  <label className="block mb-1 text-sm font-medium text-gray-700">Company Name</label>
+                  <label className="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">Company Name</label>
                   <input
                     type="text"
                     value={companyName}
                     onChange={(e) => setCompanyName(e.target.value)}
                     placeholder="e.g. Google, Amazon"
-                    className="w-full px-3 py-2 border border-gray-200 bg-[#f9fafb] rounded-md text-base focus:outline-none focus:ring-[1.5px] focus:ring-emerald-500"
+                    className="w-full px-3 py-2 border border-gray-200 dark:border-gray-600 bg-[#f9fafb] dark:bg-gray-700 dark:text-white rounded-md text-base focus:outline-none focus:ring-[1.5px] focus:ring-emerald-500"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block mb-1 text-sm font-medium text-gray-700">Job ID / Position</label>
+                  <label className="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">Job ID / Position</label>
                   <input
                     type="text"
                     value={jobId}
                     onChange={(e) => setJobId(e.target.value)}
                     placeholder="e.g. SWE-123456 or Software Engineer"
-                    className="w-full px-3 py-2 border border-gray-200 bg-[#f9fafb] rounded-md text-base focus:outline-none focus:ring-[1.5px] focus:ring-emerald-500"
+                    className="w-full px-3 py-2 border border-gray-200 dark:border-gray-600 bg-[#f9fafb] dark:bg-gray-700 dark:text-white rounded-md text-base focus:outline-none focus:ring-[1.5px] focus:ring-emerald-500"
                     required
                   />
                 </div>
                 <div>
-                  <label className="block mb-1 text-sm font-medium text-gray-700">Resume Link</label>
+                  <label className="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">Resume Link</label>
                   <input
                     type="text"
                     value={resumeLink}
                     onChange={(e) => setResumeLink(e.target.value)}
                     placeholder="https://drive.google.com/..."
-                    className="w-full px-3 py-2 border border-gray-200 bg-[#f9fafb] rounded-md text-base focus:outline-none focus:ring-[1.5px] focus:ring-emerald-500"
+                    className="w-full px-3 py-2 border border-gray-200 dark:border-gray-600 bg-[#f9fafb] dark:bg-gray-700 dark:text-white rounded-md text-base focus:outline-none focus:ring-[1.5px] focus:ring-emerald-500"
                     required
                   />
                   <p className="text-xs text-gray-400 mt-1">Provide a public link to your resume</p>

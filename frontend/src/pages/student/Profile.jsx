@@ -82,20 +82,20 @@ export default function Profile() {
 
   if (loading) {
     return (
-      <div className="flex min-h-screen bg-gray-50">
+      <div className="flex min-h-screen bg-gray-50 dark:bg-black">
         <Sidebar />
         <div className="flex-1 flex items-center justify-center">
-          <p className="text-xl font-medium text-gray-600">Loading Profile...</p>
+          <p className="text-xl font-medium text-gray-600 dark:text-gray-400">Loading Profile...</p>
         </div>
       </div>
     );
   }
 
   return (
-    <div className="flex min-h-screen bg-[#f7fafc] mt-16 md:mt-0">
+    <div className="flex min-h-screen bg-[#f7fafc] dark:bg-black mt-16 md:mt-0">
       <Sidebar />
       <main className="flex-1 flex justify-center items-start pt-20 px-4 sm:px-6 overflow-auto">
-        <section className="relative w-full max-w-3xl bg-white shadow-lg rounded-2xl pt-28 pb-12 px-6 sm:px-10 flex flex-col items-center">
+        <section className="relative w-full max-w-3xl bg-white dark:bg-gray-900 shadow-lg rounded-2xl pt-28 pb-12 px-6 sm:px-10 flex flex-col items-center">
           {/* Profile Avatar */}
           <div className="absolute left-1/2 top-0 -translate-x-1/2 -translate-y-1/2 z-10 flex justify-center">
             <div className="rounded-full border-4 border-white bg-gradient-to-br from-emerald-300 to-[#0fa18e] p-1 shadow-lg shadow-[#0fa18e]/20">
@@ -103,7 +103,7 @@ export default function Profile() {
                 <img
                   src={profile.imageUrl}
                   alt="Profile"
-                  className="h-28 w-28 sm:h-36 sm:w-36 rounded-full object-cover bg-white"
+                  className="h-28 w-28 sm:h-36 sm:w-36 rounded-full object-cover bg-white dark:bg-gray-700"
                 />
               ) : (
                 <div className="h-28 w-28 sm:h-36 sm:w-36 rounded-full bg-emerald-200 flex items-center justify-center text-white font-extrabold text-4xl sm:text-5xl uppercase">
@@ -115,8 +115,8 @@ export default function Profile() {
 
           {/* Name & Email */}
           <div className="mt-8 w-full flex flex-col items-center text-center">
-            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 break-words">{profile.name || "Your Name"}</h1>
-            <p className="text-sm sm:text-base text-gray-500 break-words">{profile.email}</p>
+            <h1 className="text-2xl sm:text-3xl font-bold text-gray-900 dark:text-white break-words">{profile.name || "Your Name"}</h1>
+            <p className="text-sm sm:text-base text-gray-500 dark:text-gray-400 break-words">{profile.email}</p>
             {!showForm && isIncomplete && (
               <div className="mt-4 w-full text-center text-sm px-4 py-2 bg-amber-100 text-amber-900 rounded-md font-medium animate-pulse">
                 Your profile is incomplete. Please update the missing fields.
@@ -139,7 +139,7 @@ export default function Profile() {
                         href={profile.resumeUrl}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="text-emerald-700 hover:text-[#0fa18e] underline font-semibold tracking-wide transition duration-150"
+                        className="text-emerald-700 dark:text-emerald-400 hover:text-[#0fa18e] underline font-semibold tracking-wide transition duration-150"
                       >
                         View Resume
                       </a>
@@ -157,13 +157,13 @@ export default function Profile() {
                   </button>
                   <a
                     href="/referrals"
-                    className="w-full max-w-xs sm:max-w-none sm:w-auto bg-white border border-emerald-500 text-emerald-700 hover:bg-emerald-50 py-3 px-8 rounded-full font-semibold transition duration-150 shadow text-center"
+                    className="w-full max-w-xs sm:max-w-none sm:w-auto bg-white dark:bg-gray-800 border border-emerald-500 text-emerald-700 dark:text-emerald-400 hover:bg-emerald-50 dark:hover:bg-gray-700 py-3 px-8 rounded-full font-semibold transition duration-150 shadow text-center"
                   >
                     View Referrals
                   </a>
                   <a
                     href="/applications"
-                    className="w-full max-w-xs sm:max-w-none sm:w-auto bg-gray-100 hover:bg-gray-200 text-gray-800 py-3 px-8 rounded-full font-semibold border border-gray-200 transition duration-150 shadow text-center"
+                    className="w-full max-w-xs sm:max-w-none sm:w-auto bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 py-3 px-8 rounded-full font-semibold border border-gray-200 dark:border-gray-600 transition duration-150 shadow text-center"
                   >
                     Saved Applications
                   </a>
@@ -183,12 +183,12 @@ export default function Profile() {
                     { name: "resumeUrl", label: "Resume URL", type: "url" },
                   ].map((field) => (
                     <div key={field.name} className="flex flex-col">
-                      <label className="block mb-2 text-sm font-semibold text-gray-700">{field.label}</label>
+                      <label className="block mb-2 text-sm font-semibold text-gray-700 dark:text-gray-300">{field.label}</label>
                       <input
                         {...field}
                         value={formData[field.name]}
                         onChange={handleChange}
-                        className="w-full border border-gray-300 rounded-lg px-4 py-3 text-gray-900 shadow-sm bg-[#f7fafc] focus:outline-none focus:ring-2 focus:ring-[#0fa18e] focus:border-[#0fa18e] transition duration-200"
+                        className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-3 text-gray-900 dark:text-white shadow-sm bg-[#f7fafc] dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-[#0fa18e] focus:border-[#0fa18e] transition duration-200"
                         required={field.name !== "resumeUrl" && field.name !== "imageUrl"}
                       />
                     </div>
@@ -205,7 +205,7 @@ export default function Profile() {
                   <button
                     type="button"
                     onClick={() => setShowForm(false)}
-                    className="w-full max-w-xs sm:max-w-none sm:w-auto bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-3 px-10 rounded-full transition duration-150"
+                    className="w-full max-w-xs sm:max-w-none sm:w-auto bg-gray-200 dark:bg-gray-700 hover:bg-gray-300 dark:hover:bg-gray-600 text-gray-800 dark:text-gray-200 font-semibold py-3 px-10 rounded-full transition duration-150"
                   >
                     Cancel
                   </button>
@@ -221,9 +221,9 @@ export default function Profile() {
 
 function Info({ label, value }) {
   return (
-    <div className="bg-[#f8fafc] rounded-lg p-4 flex flex-col shadow-sm border border-gray-100">
+    <div className="bg-[#f8fafc] dark:bg-gray-800 rounded-lg p-4 flex flex-col shadow-sm border border-gray-100 dark:border-gray-700">
       <span className="text-xs font-bold text-[#0fa18e] uppercase tracking-wider mb-1">{label}</span>
-      <span className="text-gray-800 font-medium text-base break-words">{value || "—"}</span>
+      <span className="text-gray-800 dark:text-gray-200 font-medium text-base break-words">{value || "—"}</span>
     </div>
   );
 }

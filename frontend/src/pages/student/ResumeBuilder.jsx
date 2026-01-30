@@ -142,30 +142,30 @@ function ResumeBuilder() {
     };
 
     return (
-        <div className="flex h-screen bg-slate-50">
+        <div className="flex h-screen bg-slate-50 dark:bg-black">
             <Sidebar />
             <div className="flex-1 p-8 overflow-auto">
                 <div className="flex justify-between items-center mb-8 mt-16 md:mt-0">
-                    <h1 className="text-3xl font-bold text-[#0c4a42]">Resume Builder</h1>
+                    <h1 className="text-3xl font-bold text-[#0c4a42] dark:text-emerald-400">Resume Builder</h1>
                 </div>
 
                 <form onSubmit={handleSubmit} className="space-y-8">
-                    <div className="p-6 bg-white rounded-2xl shadow-md">
+                    <div className="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md">
                         <PersonalInfo formData={formData} setFormData={setFormData} requiredFields={requiredFields.personalInfo} />
                     </div>
-                    <div className="p-6 bg-white rounded-2xl shadow-md">
+                    <div className="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md">
                         <Education formData={formData} handleArrayFieldChange={handleArrayFieldChange} addItem={addItem} removeItem={removeItem} requiredFields={requiredFields.education} />
                     </div>
-                    <div className="p-6 bg-white rounded-2xl shadow-md">
+                    <div className="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md">
                         <Experience formData={formData} handleArrayFieldChange={handleArrayFieldChange} addItem={addItem} removeItem={removeItem} requiredFields={requiredFields.experience} />
                     </div>
-                    <div className="p-6 bg-white rounded-2xl shadow-md">
+                    <div className="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md">
                         <Skills formData={formData} setFormData={setFormData} addItem={addItem} removeItem={removeItem} requiredFields={requiredFields.skills} />
                     </div>
-                    <div className="p-6 bg-white rounded-2xl shadow-md">
+                    <div className="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md">
                         <Project formData={formData} handleArrayFieldChange={handleArrayFieldChange} addItem={addItem} removeItem={removeItem} requiredFields={requiredFields.projects} />
                     </div>
-                    <div className="p-6 bg-white rounded-2xl shadow-md">
+                    <div className="p-6 bg-white dark:bg-gray-800 rounded-2xl shadow-md">
                         <Certifications formData={formData} handleArrayFieldChange={handleArrayFieldChange} addItem={addItem} removeItem={removeItem} requiredFields={requiredFields.certifications} />
                     </div>
 
@@ -173,9 +173,8 @@ function ResumeBuilder() {
                         <button
                             type="submit"
                             disabled={loading}
-                            className={`px-6 py-3 rounded-xl font-semibold text-white text-lg transition-colors duration-200 ${
-                                loading ? 'bg-blue-300 cursor-not-allowed' : 'bg-emerald-800 hover:bg-emerald-500'
-                            }`}
+                            className={`px-6 py-3 rounded-xl font-semibold text-white text-lg transition-colors duration-200 ${loading ? 'bg-blue-300 cursor-not-allowed' : 'bg-emerald-800 dark:bg-emerald-700 hover:bg-emerald-500'
+                                }`}
                         >
                             {loading ? 'Generating Resume...' : 'Generate Resume PDF'}
                         </button>

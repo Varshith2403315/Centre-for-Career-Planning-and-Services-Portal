@@ -95,12 +95,12 @@ const Alumni = () => {
   return (
     <div className="flex h-screen">
       <Sidebar />
-      <section className="flex-1 overflow-y-auto pt-16 bg-gray-100 px-4">
+      <section className="flex-1 overflow-y-auto pt-16 bg-gray-100 dark:bg-black px-4">
         <div className="max-w-4xl mx-auto">
-          <h1 className="text-3xl mt-6 md:mt-0 font-bold text-center text-[#13665b] mb-4">
+          <h1 className="text-3xl mt-6 md:mt-0 font-bold text-center text-[#13665b] dark:text-emerald-400 mb-4">
             Welcome to the Alumni Portal 🎓
           </h1>
-          <p className="text-center text-gray-600 mb-8">
+          <p className="text-center text-gray-600 dark:text-gray-400 mb-8">
             Search for alumni by company, job role, job ID, batch or name
           </p>
 
@@ -108,7 +108,7 @@ const Alumni = () => {
             <select
               value={searchType}
               onChange={(e) => setSearchType(e.target.value)}
-              className="px-4 py-2 border border-gray-300 bg-white rounded-md"
+              className="px-4 py-2 border border-gray-300 dark:border-gray-600 bg-white dark:bg-gray-700 dark:text-white rounded-md"
             >
               <option value="company">Company</option>
               <option value="jobRole">Job Role</option>
@@ -121,7 +121,7 @@ const Alumni = () => {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder={`Enter ${labelMap[searchType]}`}
-              className="px-4 py-2 border border-gray-300 rounded-md w-72"
+              className="px-4 py-2 border border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white rounded-md w-72"
             />
             <button
               onClick={handleSearch}
@@ -146,22 +146,22 @@ const Alumni = () => {
           </div>
 
           {(loadingAll || loadingSearch) ? (
-            <p className="text-center text-gray-600">Loading...</p>
+            <p className="text-center text-gray-600 dark:text-gray-400">Loading...</p>
           ) : alumniList.length > 0 ? (
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {alumniList.map((alum, index) => (
-                <AlumniCard 
-                  key={index} 
-                  alum={alum} 
-                  index={index} 
+                <AlumniCard
+                  key={index}
+                  alum={alum}
+                  index={index}
                   authUser={authUser}
                   onEditAlumni={handleEditAlumni(alum._id)}
                   onDeleteAlumni={handleDeleteAlumni(alum._id)}
-                  />
+                />
               ))}
             </div>
           ) : (
-            <p className="text-center text-gray-500">No alumni found.</p>
+            <p className="text-center text-gray-500 dark:text-gray-400">No alumni found.</p>
           )}
         </div>
       </section>

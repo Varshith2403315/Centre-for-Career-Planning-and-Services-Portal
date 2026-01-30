@@ -108,10 +108,10 @@ const AddAlumni = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-50 dark:bg-black">
       <Sidebar />
       <main className="flex-1 p-6 pt-20 md:pt-8 w-full">
-        <div className="max-w-3xl mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+        <div className="max-w-3xl mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden">
           {/* Header */}
           <div className="bg-[#0c4a42] p-6">
             <h2 className="text-2xl font-bold text-white">
@@ -130,7 +130,7 @@ const AddAlumni = () => {
               <input
                 type="text"
                 placeholder="Search by Institute ID"
-                className="w-full border border-gray-300 rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 transition"
+                className="w-full border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-gray-900 dark:text-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 transition"
                 value={searchId}
                 onChange={(e) => setSearchId(e.target.value)}
               />
@@ -152,14 +152,14 @@ const AddAlumni = () => {
           >
             {/* Inputs */}
             <div className="flex flex-col">
-              <label htmlFor="name" className="text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="name" className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Full Name
               </label>
               <input
                 id="name"
                 name="name"
                 placeholder="Full Name"
-                className="border border-gray-300 rounded-lg px-4 py-2 text-gray-900 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 transition"
+                className="border border-gray-300 dark:border-gray-600 rounded-lg px-4 py-2 text-gray-900 dark:text-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-green-600 transition"
                 value={form.name}
                 onChange={handleChange}
                 required
@@ -167,7 +167,7 @@ const AddAlumni = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="company" className="text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="company" className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Company
               </label>
               <input
@@ -182,7 +182,7 @@ const AddAlumni = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="linkedin" className="text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="linkedin" className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 LinkedIn URL
               </label>
               <input
@@ -197,7 +197,7 @@ const AddAlumni = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="InstituteId" className="text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="InstituteId" className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Institute ID
               </label>
               <input
@@ -213,7 +213,7 @@ const AddAlumni = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="MobileNumber" className="text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="MobileNumber" className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Mobile Number
               </label>
               <input
@@ -228,7 +228,7 @@ const AddAlumni = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="Email" className="text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="Email" className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Email
               </label>
               <input
@@ -244,7 +244,7 @@ const AddAlumni = () => {
               />
             </div>
             <div className="flex flex-col">
-              <label htmlFor="batch" className="text-sm font-medium text-gray-700 mb-1">
+              <label htmlFor="batch" className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                 Batch Year
               </label>
               <input
@@ -262,10 +262,10 @@ const AddAlumni = () => {
 
             {/* Jobs Block */}
             <div className="md:col-span-2">
-              <h3 className="text-lg font-semibold mb-2 text-[#0c4a42]">Job Information</h3>
+              <h3 className="text-lg font-semibold mb-2 text-[#0c4a42] dark:text-emerald-400">Job Information</h3>
               <div className="flex flex-col md:flex-row gap-4">
                 <div className="flex flex-col flex-1">
-                  <label htmlFor="job-id" className="text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="job-id" className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Job ID
                   </label>
                   <input
@@ -280,7 +280,7 @@ const AddAlumni = () => {
                   />
                 </div>
                 <div className="flex flex-col flex-1">
-                  <label htmlFor="job-role" className="text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="job-role" className="text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">
                     Job Role
                   </label>
                   <input

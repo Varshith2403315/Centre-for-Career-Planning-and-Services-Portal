@@ -13,11 +13,11 @@ function PersonalInfo({ formData, setFormData }) {
   };
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-md mb-6">
-      <h2 className="text-xl font-semibold text-slate-700 mb-4">Personal Information</h2>
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-md mb-6 transition-colors duration-200">
+      <h2 className="text-xl font-semibold text-slate-700 dark:text-gray-200 mb-4">Personal Information</h2>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
-          <label className="block text-sm font-medium text-slate-600 mb-1">
+          <label className="block text-sm font-medium text-slate-600 dark:text-gray-300 mb-1">
             Full Name<span className="text-red-500">*</span>
           </label>
           <input
@@ -26,12 +26,12 @@ function PersonalInfo({ formData, setFormData }) {
             value={formData.personalInfo.name}
             onChange={handlePersonalInfoChange}
             required
-            className="w-full p-2 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full p-2 border border-slate-300 dark:border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
             placeholder="Enter your full name"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-600 mb-1">
+          <label className="block text-sm font-medium text-slate-600 dark:text-gray-300 mb-1">
             Email<span className="text-red-500">*</span>
           </label>
           <input
@@ -40,12 +40,12 @@ function PersonalInfo({ formData, setFormData }) {
             value={formData.personalInfo.email}
             onChange={handlePersonalInfoChange}
             required
-            className="w-full p-2 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full p-2 border border-slate-300 dark:border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
             placeholder="Enter your email"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-600 mb-1">
+          <label className="block text-sm font-medium text-slate-600 dark:text-gray-300 mb-1">
             Phone Number<span className="text-red-500">*</span>
           </label>
           <input
@@ -54,12 +54,12 @@ function PersonalInfo({ formData, setFormData }) {
             value={formData.personalInfo.phone}
             onChange={handlePersonalInfoChange}
             required
-            className="w-full p-2 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full p-2 border border-slate-300 dark:border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
             placeholder="Enter your phone number"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-600 mb-1">
+          <label className="block text-sm font-medium text-slate-600 dark:text-gray-300 mb-1">
             Address<span className="text-red-500">*</span>
           </label>
           <input
@@ -67,12 +67,12 @@ function PersonalInfo({ formData, setFormData }) {
             name="address"
             value={formData.personalInfo.address}
             onChange={handlePersonalInfoChange}
-            className="w-full p-2 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full p-2 border border-slate-300 dark:border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
             placeholder="Enter your address"
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-600 mb-1">
+          <label className="block text-sm font-medium text-slate-600 dark:text-gray-300 mb-1">
             LinkedIn Profile<span className="text-red-500">*</span>
           </label>
           <input
@@ -80,12 +80,12 @@ function PersonalInfo({ formData, setFormData }) {
             name="linkedin"
             value={formData.personalInfo.linkedin}
             onChange={handlePersonalInfoChange}
-            className="w-full p-2 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full p-2 border border-slate-300 dark:border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
             placeholder="https://linkedin.com/in/..."
           />
         </div>
         <div>
-          <label className="block text-sm font-medium text-slate-600 mb-1">
+          <label className="block text-sm font-medium text-slate-600 dark:text-gray-300 mb-1">
             GitHub Profile<span className="text-red-500">*</span>
           </label>
           <input
@@ -93,7 +93,7 @@ function PersonalInfo({ formData, setFormData }) {
             name="github"
             value={formData.personalInfo.github}
             onChange={handlePersonalInfoChange}
-            className="w-full p-2 border border-slate-300 rounded focus:outline-none focus:ring-2 focus:ring-green-500"
+            className="w-full p-2 border border-slate-300 dark:border-gray-600 rounded focus:outline-none focus:ring-2 focus:ring-green-500 dark:bg-gray-700 dark:text-white"
             placeholder="https://github.com/..."
           />
         </div>

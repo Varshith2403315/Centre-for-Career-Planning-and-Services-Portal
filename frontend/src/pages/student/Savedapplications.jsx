@@ -72,15 +72,15 @@ const SavedApplicationsPage = () => {
   const allJobs = Array.from(allJobsMap.values());
 
   return (
-    <div className="flex min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50">
+    <div className="flex min-h-screen bg-gradient-to-br from-gray-50 via-white to-blue-50 dark:bg-none dark:bg-black">
       <Sidebar />
       <main className="flex-1 pt-20 md:pt-10 px-4 sm:px-6 lg:px-8 w-full max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold text-gray-900 mb-8 font-montserrat">
-          <span className="text-[#13665b]">Saved</span> Applications
+        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-8 font-montserrat">
+          <span className="text-[#13665b] dark:text-emerald-400">Saved</span> Applications
         </h1>
 
         {allJobs.length === 0 ? (
-          <p className="text-gray-600 text-lg">No saved or applied applications yet.</p>
+          <p className="text-gray-600 dark:text-gray-400 text-lg">No saved or applied applications yet.</p>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
             {allJobs.map(({ job, application, saved }) => {
@@ -99,7 +99,7 @@ const SavedApplicationsPage = () => {
               return (
                 <div
                   key={job._id}
-                  className="group relative bg-white border border-gray-200 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:bg-blue-50 transition-all duration-300"
+                  className="group relative bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:bg-blue-50 dark:hover:bg-gray-700 transition-all duration-300"
                 >
                   <div className="absolute inset-0 bg-gradient-to-br from-blue-50/0 via-transparent to-indigo-50/0 group-hover:from-blue-50/30 group-hover:to-indigo-50/30 transition-all duration-300 rounded-2xl pointer-events-none"></div>
 
@@ -112,14 +112,14 @@ const SavedApplicationsPage = () => {
                     </span>
                   </div>
 
-                  <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#0c4a42] transition-colors duration-200 relative z-10 line-clamp-2">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-[#0c4a42] dark:group-hover:text-emerald-300 transition-colors duration-200 relative z-10 line-clamp-2">
                     {job.jobTitle}
                   </h2>
 
                   <div className="flex items-center mb-4 relative z-10">
-                    <div className="w-10 h-10 bg-gradient-to-br from-gray-100 to-gray-200 rounded-xl flex items-center justify-center mr-3 group-hover:from-blue-100 group-hover:to-indigo-100 transition-all duration-300">
+                    <div className="w-10 h-10 bg-gradient-to-br from-gray-100 to-gray-200 dark:from-gray-700 dark:to-gray-600 rounded-xl flex items-center justify-center mr-3 group-hover:from-blue-100 group-hover:to-indigo-100 transition-all duration-300">
                       <svg
-                        className="w-5 h-5 text-gray-600 group-hover:text-blue-600 transition-colors duration-300"
+                        className="w-5 h-5 text-gray-600 dark:text-gray-300 group-hover:text-blue-600 transition-colors duration-300"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -133,35 +133,33 @@ const SavedApplicationsPage = () => {
                       </svg>
                     </div>
                     <div>
-                      <p className="font-semibold text-gray-900 text-sm">{job.Company}</p>
+                      <p className="font-semibold text-gray-900 dark:text-white text-sm">{job.Company}</p>
                       <p className="text-xs text-gray-500">Company</p>
                     </div>
                   </div>
 
-                  <p className="text-gray-600 text-sm leading-relaxed mb-6 line-clamp-3 relative z-10">
+                  <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed mb-6 line-clamp-3 relative z-10">
                     {job.jobDescription}
                   </p>
 
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100 relative z-10">
+                  <div className="flex items-center justify-between pt-4 border-t border-gray-100 dark:border-gray-700 relative z-10">
                     <div className="flex flex-col">
                       {applied ? (
                         <span
-                          className={`inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold ${
-                            status === "Accepted"
-                              ? "bg-green-100 text-green-800 border border-green-200"
-                              : status === "Rejected"
+                          className={`inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-semibold ${status === "Accepted"
+                            ? "bg-green-100 text-green-800 border border-green-200"
+                            : status === "Rejected"
                               ? "bg-red-100 text-red-800 border border-red-200"
                               : "bg-yellow-100 text-yellow-800 border border-yellow-200"
-                          }`}
+                            }`}
                         >
                           <div
-                            className={`w-1.5 h-1.5 rounded-full mr-2 ${
-                              status === "Accepted"
-                                ? "bg-green-500"
-                                : status === "Rejected"
+                            className={`w-1.5 h-1.5 rounded-full mr-2 ${status === "Accepted"
+                              ? "bg-green-500"
+                              : status === "Rejected"
                                 ? "bg-red-500"
                                 : "bg-yellow-500"
-                            }`}
+                              }`}
                           ></div>
                           {status || "Applied"}
                         </span>

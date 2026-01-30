@@ -2,9 +2,9 @@ import React from 'react';
 
 function Education({ formData, handleArrayFieldChange, addItem, removeItem }) {
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-md mb-6 border border-slate-200">
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md mb-6 border border-slate-200 dark:border-gray-700 transition-colors duration-200">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold text-slate-800">Education</h2>
+        <h2 className="text-xl font-semibold text-slate-800 dark:text-gray-200">Education</h2>
         <button
           type="button"
           onClick={() => addItem('education')}
@@ -17,7 +17,7 @@ function Education({ formData, handleArrayFieldChange, addItem, removeItem }) {
       {formData.education.map((edu, index) => (
         <div
           key={index}
-          className="mb-4 p-5 rounded-xl border border-slate-300 bg-slate-50 relative"
+          className="mb-4 p-5 rounded-xl border border-slate-300 dark:border-gray-600 bg-slate-50 dark:bg-gray-700 relative"
         >
           {formData.education.length > 1 && (
             <button
@@ -32,7 +32,7 @@ function Education({ formData, handleArrayFieldChange, addItem, removeItem }) {
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
                 Institution<span className="text-red-500">*</span>
               </label>
               <input
@@ -41,12 +41,12 @@ function Education({ formData, handleArrayFieldChange, addItem, removeItem }) {
                 value={edu.institution}
                 onChange={(e) => handleArrayFieldChange('education', index, e)}
                 required
-                className="w-full p-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                className="w-full p-2 rounded-lg border border-slate-300 dark:border-gray-500 focus:ring-2 focus:ring-green-500 focus:outline-none dark:bg-gray-600 dark:text-white"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
                 Degree<span className="text-red-500">*</span>
               </label>
               <input
@@ -55,12 +55,12 @@ function Education({ formData, handleArrayFieldChange, addItem, removeItem }) {
                 value={edu.degree}
                 onChange={(e) => handleArrayFieldChange('education', index, e)}
                 required
-                className="w-full p-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                className="w-full p-2 rounded-lg border border-slate-300 dark:border-gray-500 focus:ring-2 focus:ring-green-500 focus:outline-none dark:bg-gray-600 dark:text-white"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
                 Field of Study<span className="text-red-500">*</span>
               </label>
               <input
@@ -69,12 +69,12 @@ function Education({ formData, handleArrayFieldChange, addItem, removeItem }) {
                 value={edu.field}
                 onChange={(e) => handleArrayFieldChange('education', index, e)}
                 required
-                className="w-full p-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                className="w-full p-2 rounded-lg border border-slate-300 dark:border-gray-500 focus:ring-2 focus:ring-green-500 focus:outline-none dark:bg-gray-600 dark:text-white"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
                 GPA
               </label>
               <input
@@ -82,12 +82,12 @@ function Education({ formData, handleArrayFieldChange, addItem, removeItem }) {
                 name="gpa"
                 value={edu.gpa}
                 onChange={(e) => handleArrayFieldChange('education', index, e)}
-                className="w-full p-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                className="w-full p-2 rounded-lg border border-slate-300 dark:border-gray-500 focus:ring-2 focus:ring-green-500 focus:outline-none dark:bg-gray-600 dark:text-white"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
                 Start Date<span className="text-red-500">*</span>
               </label>
               <input
@@ -96,12 +96,12 @@ function Education({ formData, handleArrayFieldChange, addItem, removeItem }) {
                 value={edu.startDate}
                 onChange={(e) => handleArrayFieldChange('education', index, e)}
                 required
-                className="w-full p-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                className="w-full p-2 rounded-lg border border-slate-300 dark:border-gray-500 focus:ring-2 focus:ring-green-500 focus:outline-none dark:bg-gray-600 dark:text-white"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
                 End Date<span className="text-red-500">*</span>
               </label>
               <input
@@ -109,7 +109,7 @@ function Education({ formData, handleArrayFieldChange, addItem, removeItem }) {
                 name="endDate"
                 value={edu.endDate}
                 onChange={(e) => handleArrayFieldChange('education', index, e)}
-                className="w-full p-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                className="w-full p-2 rounded-lg border border-slate-300 dark:border-gray-500 focus:ring-2 focus:ring-green-500 focus:outline-none dark:bg-gray-600 dark:text-white"
               />
             </div>
           </div>

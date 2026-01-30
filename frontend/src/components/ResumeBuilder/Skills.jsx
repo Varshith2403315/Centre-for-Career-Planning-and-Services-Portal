@@ -12,9 +12,9 @@ function Skills({ formData, setFormData, addItem, removeItem }) {
   };
 
   return (
-    <div className="bg-white p-6 rounded-2xl shadow-md mb-6 border border-slate-200">
+    <div className="bg-white dark:bg-gray-800 p-6 rounded-2xl shadow-md mb-6 border border-slate-200 dark:border-gray-700 transition-colors duration-200">
       <div className="flex justify-between items-center mb-4">
-        <h2 className="text-xl font-semibold text-slate-800">Skills</h2>
+        <h2 className="text-xl font-semibold text-slate-800 dark:text-gray-200">Skills</h2>
         <button
           type="button"
           onClick={() => addItem('skills')}
@@ -26,7 +26,7 @@ function Skills({ formData, setFormData, addItem, removeItem }) {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {formData.skills.map((skill, index) => (
-          <div key={index} className="relative p-5 rounded-xl border border-slate-300 bg-slate-50">
+          <div key={index} className="relative p-5 rounded-xl border border-slate-300 dark:border-gray-600 bg-slate-50 dark:bg-gray-700">
             {formData.skills.length > 1 && (
               <button
                 type="button"
@@ -38,14 +38,14 @@ function Skills({ formData, setFormData, addItem, removeItem }) {
               </button>
             )}
             <div>
-              <label className="block text-sm font-medium text-slate-700 mb-1">
+              <label className="block text-sm font-medium text-slate-700 dark:text-gray-300 mb-1">
                 Skill Name<span className="text-red-500">*</span>
               </label>
               <input
                 type="text"
                 value={skill}
                 onChange={(e) => handleSkillChange(index, e.target.value)}
-                className="w-full p-2 rounded-lg border border-slate-300 focus:ring-2 focus:ring-green-500 focus:outline-none"
+                className="w-full p-2 rounded-lg border border-slate-300 dark:border-gray-500 focus:ring-2 focus:ring-green-500 focus:outline-none dark:bg-gray-600 dark:text-white"
                 placeholder="Enter a skill"
               />
             </div>

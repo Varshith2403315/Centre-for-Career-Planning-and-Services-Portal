@@ -76,12 +76,12 @@ const AnalyticsDashboard = () => {
   }));
 
   return (
-    <div className="md:pl-14 md:pr-14 flex min-h-screen bg-slate-50">
+    <div className="md:pl-14 md:pr-14 flex min-h-screen bg-slate-50 dark:bg-black">
       <Sidebar />
 
       <div className="flex-1 flex flex-col">
         <header className="p-4 md:p-6">
-          <h1 className="text-3xl font-bold text-emerald-900 mt-14 md:mt-2">Analytics</h1>
+          <h1 className="text-3xl font-bold text-emerald-900 dark:text-emerald-400 mt-14 md:mt-2">Analytics</h1>
         </header>
 
         <main className="flex-1 p-4 md:p-8 space-y-10">
@@ -90,18 +90,18 @@ const AnalyticsDashboard = () => {
             {statCards.map((stat, idx) => (
               <div
                 key={idx}
-                className="bg-white border-2 border-emerald-600 hover:shadow-md hover:bg-emerald-50 hover:scale-105 transition-transform duration-200 p-4 rounded-lg shadow flex flex-col items-center"
+                className="bg-white dark:bg-gray-800 border-2 border-emerald-600 dark:border-emerald-500 hover:shadow-md hover:bg-emerald-50 dark:hover:bg-emerald-900 hover:scale-105 transition-transform duration-200 p-4 rounded-lg shadow flex flex-col items-center"
               >
-                <span className="text-emerald-700 text-lg font-bold">{stat.label}</span>
-                <span className="text-2xl font-bold text-gray-900">{stat.value}</span>
+                <span className="text-emerald-700 dark:text-emerald-300 text-lg font-bold">{stat.label}</span>
+                <span className="text-2xl font-bold text-gray-900 dark:text-gray-100">{stat.value}</span>
               </div>
             ))}
           </div>
 
           {/* Line & Pie Charts */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="bg-white p-4 rounded-lg shadow">
-              <h2 className="font-semibold mb-2 text-emerald-700">College Performance (%)</h2>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+              <h2 className="font-semibold mb-2 text-emerald-700 dark:text-emerald-300">College Performance (%)</h2>
               <div className="w-full h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <LineChart data={collegePerformanceData}>
@@ -114,8 +114,8 @@ const AnalyticsDashboard = () => {
               </div>
             </div>
 
-            <div className="bg-white p-4 rounded-lg shadow overflow-x-auto">
-              <h2 className="font-semibold mb-2 text-emerald-700">Sectors (Students Placed)</h2>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow overflow-x-auto">
+              <h2 className="font-semibold mb-2 text-emerald-700 dark:text-emerald-300">Sectors (Students Placed)</h2>
               <div className="min-w-[300px] w-full h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <PieChart>
@@ -144,8 +144,8 @@ const AnalyticsDashboard = () => {
 
           {/* Bar Charts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
-            <div className="bg-white p-4 rounded-lg shadow">
-              <h2 className="font-semibold mb-2 text-emerald-700">Best Companies</h2>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+              <h2 className="font-semibold mb-2 text-emerald-700 dark:text-emerald-300">Best Companies</h2>
               <div className="w-full h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={bestCompanyData}>
@@ -159,8 +159,8 @@ const AnalyticsDashboard = () => {
               </div>
             </div>
 
-            <div className="bg-white p-4 rounded-lg shadow">
-              <h2 className="font-semibold mb-2 text-emerald-700">Placement Statistics by Year</h2>
+            <div className="bg-white dark:bg-gray-800 p-4 rounded-lg shadow">
+              <h2 className="font-semibold mb-2 text-emerald-700 dark:text-emerald-300">Placement Statistics by Year</h2>
               <div className="w-full h-[300px]">
                 <ResponsiveContainer width="100%" height="100%">
                   <BarChart data={placementStatsData}>
