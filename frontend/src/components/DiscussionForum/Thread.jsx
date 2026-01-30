@@ -93,7 +93,7 @@ const Thread = ({ thread, onVoteSuccess, refreshThreads }) => {
     }
 
     return (
-        <div className="bg-white rounded-lg p-4 min-h-[210px] flex gap-4 shadow border border-gray-200 hover:shadow-md transition duration-150">
+        <div className="bg-white dark:bg-gray-800 rounded-lg p-4 min-h-[210px] flex gap-4 shadow border border-gray-200 dark:border-gray-700 hover:shadow-md transition duration-150">
 
             <div className="flex flex-col items-center justify-start w-10 mt-auto mb-1">
                 <div className="flex items-center gap-1">
@@ -108,7 +108,7 @@ const Thread = ({ thread, onVoteSuccess, refreshThreads }) => {
                             <path d="M12 4l-8 8h16z" />
                         </svg>
                     </button>
-                    <span className="text-sm font-semibold text-gray-700">
+                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                         {localThread.upvotes?.length || 0}
                     </span>
                 </div>
@@ -125,7 +125,7 @@ const Thread = ({ thread, onVoteSuccess, refreshThreads }) => {
                             <path d="M12 4l-8 8h16z" />
                         </svg>
                     </button>
-                    <span className="text-sm font-semibold text-gray-700">
+                    <span className="text-sm font-semibold text-gray-700 dark:text-gray-300">
                         {localThread.downvotes?.length || 0}
                     </span>
                 </div>
@@ -133,16 +133,16 @@ const Thread = ({ thread, onVoteSuccess, refreshThreads }) => {
 
             {/* THREAD CONTENT */}
             <div className="flex-1 flex flex-col">
-                <h3 className="text-base font-semibold text-gray-900">{localThread.title}</h3>
+                <h3 className="text-base font-semibold text-gray-900 dark:text-white">{localThread.title}</h3>
                 <div className="mt-2 flex-1 flex flex-col justify-between gap-3">
-                    <p className="text-gray-700 text-sm">{localThread.text}</p>
+                    <p className="text-gray-700 dark:text-gray-300 text-sm">{localThread.text}</p>
                     {renderFile()}
                 </div>
 
                 {/* Bottom Bar */}
                 <div className="flex justify-end items-end w-full mt-3">
                     <div className="flex flex-col items-end mr-4">
-                        <span className="text-xs text-gray-500 font-medium mb-1">
+                        <span className="text-xs text-gray-500 dark:text-gray-400 font-medium mb-1">
                             Author: {localThread.author.name}
                         </span>
                     </div>
@@ -177,10 +177,10 @@ const Thread = ({ thread, onVoteSuccess, refreshThreads }) => {
                         {showCommentForm && (
                             <form
                                 onSubmit={handleAddComment}
-                                className="mt-2 flex flex-col gap-2 rounded-md bg-emerald-50 p-3"
+                                className="mt-2 flex flex-col gap-2 rounded-md bg-emerald-50 dark:bg-emerald-900/30 p-3"
                             >
                                 <textarea
-                                    className="w-full p-2 border border-gray-200 rounded-md focus:border-emerald-400 focus:ring-emerald-100 text-sm"
+                                    className="w-full p-2 border border-gray-200 dark:border-gray-600 rounded-md focus:border-emerald-400 focus:ring-emerald-100 dark:bg-gray-700 dark:text-white text-sm"
                                     rows="2"
                                     placeholder="Write a comment..."
                                     value={newComment}

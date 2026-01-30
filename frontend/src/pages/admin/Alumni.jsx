@@ -104,17 +104,17 @@ const AdminAlumniPage = () => {
   };
 
   return (
-    <div className="flex min-h-screen bg-gray-50">
+    <div className="flex min-h-screen bg-gray-50 dark:bg-black">
       <Sidebar />
-      <main className="flex-grow bg-gray-100 py-10 px-6 md:px-12">
-        <div className="max-w-5xl mx-auto bg-white rounded-3xl shadow-lg p-10 md:p-12">
-          <h1 className="text-4xl font-bold text-gray-900 text-center mb-10">
+      <main className="flex-grow bg-gray-100 dark:bg-gray-900 py-10 px-6 md:px-12">
+        <div className="max-w-5xl mx-auto bg-white dark:bg-gray-800 rounded-3xl shadow-lg p-10 md:p-12">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white text-center mb-10">
             {isEditMode ? "Edit Alumni" : "Add New Alumni"}
           </h1>
 
           {/* Search Bar */}
           <section className="mb-10">
-            <label htmlFor="searchId" className="block mb-2 font-semibold text-gray-700">
+            <label htmlFor="searchId" className="block mb-2 font-semibold text-gray-700 dark:text-gray-300">
               Search Alumni by Institute ID
             </label>
             <div className="flex flex-col md:flex-row gap-4">
@@ -122,7 +122,7 @@ const AdminAlumniPage = () => {
                 id="searchId"
                 type="text"
                 placeholder="Enter Institute ID"
-                className="input input-bordered flex-grow rounded-lg border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="input input-bordered flex-grow rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 value={searchId}
                 onChange={(e) => setSearchId(e.target.value)}
               />
@@ -140,7 +140,7 @@ const AdminAlumniPage = () => {
           <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {/* Name */}
             <div className="flex flex-col">
-              <label htmlFor="name" className="mb-2 font-semibold text-gray-700">
+              <label htmlFor="name" className="mb-2 font-semibold text-gray-700 dark:text-gray-300">
                 Full Name
               </label>
               <input
@@ -148,7 +148,7 @@ const AdminAlumniPage = () => {
                 id="name"
                 name="name"
                 placeholder="e.g. John Doe"
-                className="input input-bordered rounded-lg border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="input input-bordered rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 value={form.name}
                 onChange={handleChange}
                 required
@@ -158,7 +158,7 @@ const AdminAlumniPage = () => {
 
             {/* Company */}
             <div className="flex flex-col">
-              <label htmlFor="company" className="mb-2 font-semibold text-gray-700">
+              <label htmlFor="company" className="mb-2 font-semibold text-gray-700 dark:text-gray-300">
                 Company
               </label>
               <input
@@ -166,7 +166,7 @@ const AdminAlumniPage = () => {
                 id="company"
                 name="company"
                 placeholder="e.g. Google"
-                className="input input-bordered rounded-lg border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="input input-bordered rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 value={form.company}
                 onChange={handleChange}
                 required
@@ -175,7 +175,7 @@ const AdminAlumniPage = () => {
 
             {/* LinkedIn */}
             <div className="flex flex-col">
-              <label htmlFor="linkedin" className="mb-2 font-semibold text-gray-700">
+              <label htmlFor="linkedin" className="mb-2 font-semibold text-gray-700 dark:text-gray-300">
                 LinkedIn URL
               </label>
               <input
@@ -183,7 +183,7 @@ const AdminAlumniPage = () => {
                 id="linkedin"
                 name="linkedin"
                 placeholder="https://linkedin.com/in/username"
-                className="input input-bordered rounded-lg border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="input input-bordered rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 value={form.linkedin}
                 onChange={handleChange}
                 required
@@ -192,7 +192,7 @@ const AdminAlumniPage = () => {
 
             {/* Institute ID */}
             <div className="flex flex-col">
-              <label htmlFor="InstituteId" className="mb-2 font-semibold text-gray-700">
+              <label htmlFor="InstituteId" className="mb-2 font-semibold text-gray-700 dark:text-gray-300">
                 Institute ID
               </label>
               <input
@@ -200,7 +200,7 @@ const AdminAlumniPage = () => {
                 id="InstituteId"
                 name="InstituteId"
                 placeholder="Unique Institute ID"
-                className={`input input-bordered rounded-lg border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none ${isEditMode ? "bg-gray-100 cursor-not-allowed" : ""}`}
+                className={`input input-bordered rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none ${isEditMode ? "bg-gray-100 dark:bg-gray-600 cursor-not-allowed" : ""}`}
                 value={form.InstituteId}
                 onChange={handleChange}
                 required
@@ -210,7 +210,7 @@ const AdminAlumniPage = () => {
 
             {/* Mobile Number */}
             <div className="flex flex-col">
-              <label htmlFor="MobileNumber" className="mb-2 font-semibold text-gray-700">
+              <label htmlFor="MobileNumber" className="mb-2 font-semibold text-gray-700 dark:text-gray-300">
                 Mobile Number
               </label>
               <input
@@ -218,7 +218,7 @@ const AdminAlumniPage = () => {
                 id="MobileNumber"
                 name="MobileNumber"
                 placeholder="+1 234 567 8900"
-                className="input input-bordered rounded-lg border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="input input-bordered rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 value={form.MobileNumber}
                 onChange={handleChange}
                 required
@@ -229,7 +229,7 @@ const AdminAlumniPage = () => {
 
             {/* Email */}
             <div className="flex flex-col">
-              <label htmlFor="Email" className="mb-2 font-semibold text-gray-700">
+              <label htmlFor="Email" className="mb-2 font-semibold text-gray-700 dark:text-gray-300">
                 Email Address
               </label>
               <input
@@ -237,7 +237,7 @@ const AdminAlumniPage = () => {
                 id="Email"
                 name="Email"
                 placeholder="name@example.com"
-                className="input input-bordered rounded-lg border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="input input-bordered rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 value={form.Email}
                 onChange={handleChange}
                 required
@@ -247,7 +247,7 @@ const AdminAlumniPage = () => {
 
             {/* Batch Year */}
             <div className="flex flex-col">
-              <label htmlFor="batch" className="mb-2 font-semibold text-gray-700">
+              <label htmlFor="batch" className="mb-2 font-semibold text-gray-700 dark:text-gray-300">
                 Batch Year
               </label>
               <input
@@ -255,7 +255,7 @@ const AdminAlumniPage = () => {
                 id="batch"
                 name="batch"
                 placeholder="e.g. 2021"
-                className="input input-bordered rounded-lg border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                className="input input-bordered rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                 value={form.batch}
                 onChange={handleChange}
                 required
@@ -265,13 +265,13 @@ const AdminAlumniPage = () => {
             </div>
 
             {/* Job Information (span both columns) */}
-            <fieldset className="md:col-span-2 border border-gray-300 rounded-lg p-5">
-              <legend className="text-lg font-semibold text-gray-800 mb-4 px-2">
+            <fieldset className="md:col-span-2 border border-gray-300 dark:border-gray-600 rounded-lg p-5">
+              <legend className="text-lg font-semibold text-gray-800 dark:text-gray-200 mb-4 px-2">
                 Job Information
               </legend>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="flex flex-col">
-                  <label htmlFor="job-id" className="mb-2 font-medium text-gray-700">
+                  <label htmlFor="job-id" className="mb-2 font-medium text-gray-700 dark:text-gray-300">
                     Job ID
                   </label>
                   <input
@@ -279,14 +279,14 @@ const AdminAlumniPage = () => {
                     id="job-id"
                     name="job-id"
                     placeholder="e.g. 12345"
-                    className="input input-bordered rounded-lg border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="input input-bordered rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     value={form.jobs[0]?.id || ""}
                     onChange={handleChange}
                     required
                   />
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="job-role" className="mb-2 font-medium text-gray-700">
+                  <label htmlFor="job-role" className="mb-2 font-medium text-gray-700 dark:text-gray-300">
                     Job Role
                   </label>
                   <input
@@ -294,7 +294,7 @@ const AdminAlumniPage = () => {
                     id="job-role"
                     name="job-role"
                     placeholder="e.g. Software Engineer"
-                    className="input input-bordered rounded-lg border-gray-300 focus:ring-2 focus:ring-blue-500 focus:outline-none"
+                    className="input input-bordered rounded-lg border-gray-300 dark:border-gray-600 dark:bg-gray-700 dark:text-white focus:ring-2 focus:ring-blue-500 focus:outline-none"
                     value={form.jobs[0]?.role || ""}
                     onChange={handleChange}
                     required
