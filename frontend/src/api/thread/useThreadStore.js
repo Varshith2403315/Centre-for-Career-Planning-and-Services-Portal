@@ -1,6 +1,6 @@
 import toast from 'react-hot-toast';
 import { useAppContext } from '../../context/AppContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const convertToBase64 = (file) => {
     return new Promise((resolve, reject) => {
@@ -16,6 +16,10 @@ const useThreadStore = () => {
     const [threads, setThreads] = useState([]);
     const { backendUrl } = useAppContext();
     const token = localStorage.getItem('ccps-token');
+
+    useEffect(() => {
+        getThreads();
+    }, []);
 
     const getThreads = async () => {
         setLoading(true);

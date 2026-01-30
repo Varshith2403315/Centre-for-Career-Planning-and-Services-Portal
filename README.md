@@ -1,4 +1,3 @@
-
 <h1 align="center">Centre-for-Career-Planning-and-Services-Portal</h1>
 
 <p align="center">
@@ -32,9 +31,14 @@ A robust Job Portal Application that streamlines job searching, application mana
 4. [Features](#features)  
 5. [Project Structure](#project-structure)  
 6. [Getting Started](#getting-started)  
-7. [Maintainers](#maintainers)  
-8. [Contributing](#contributing)  
-9. [Contact](#contact)  
+7. [Quick Start Guide](#quick-start-guide)
+8. [Environment Variables Example](#environment-variables-example)
+9. [Basic API Overview](#basic-api-overview)
+10. [Common Issues & Troubleshooting](#common-issues--troubleshooting)
+11. [Contribution Workflow](#contribution-workflow)
+12. [Maintainers](#maintainers)  
+13. [Contributing](#contributing)  
+14. [Contact](#contact)   
 
 ---
 
@@ -210,8 +214,86 @@ Centre-for-Career-Planning-and-Services-Portal/
    - Navigate to `http://localhost:5173` to view the frontend application.
    - The backend server should be running on `http://localhost:5000` (or the port specified in your `.env` file).
 
+---
 
-   
+## Quick Start Guide
+[↥ Back to top](#table-of-contents)
+
+For quick local setup:
+
+### Backend
+```bash
+cd backend
+npm install
+node server.js
+```
+
+### Frontend
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+Make sure backend is running before starting frontend.
+
+---
+
+## Environment Variables Example
+[↥ Back to top](#table-of-contents)
+
+Create a `.env` file inside the backend directory with the following format:
+
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_secret_key
+```
+
+Refer to `.env.example` file for required variables.
+
+---
+
+## Basic API Overview
+[↥ Back to top](#table-of-contents)
+
+Some common API route categories:
+
+- `/api/users` → Authentication & user management
+- `/api/jobs` → Job postings and job feed
+- `/api/applications` → Application submission and tracking
+- `/api/community` → Alumni interactions & referrals
+- `/api/analytics` → Placement and job metrics
+
+(Refer backend routes folder for full API structure)
+
+---
+
+## Common Issues & Troubleshooting
+[↥ Back to top](#table-of-contents)
+
+- Ensure MongoDB Atlas connection string is correct
+- Backend must be running before frontend
+- Check API base URL configuration in frontend services
+- Make sure required environment variables are set
+
+---
+
+## Contribution Workflow
+[↥ Back to top](#table-of-contents)
+
+To contribute:
+
+1. Fork the repository
+2. Clone your fork locally
+3. Create a new feature branch
+4. Make your changes
+5. Commit with clear messages
+6. Push to your fork
+7. Open a Pull Request
+
+Please describe your changes clearly in the PR.
+
 ---
 
 ## Maintainers
@@ -239,4 +321,3 @@ We welcome contributions! Feel free to open an issue or submit a pull request. B
 [↥ Back to top](#table-of-contents)
 
 If you have any questions or feedback, feel free to reach out to the maintainers.
-
