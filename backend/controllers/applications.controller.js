@@ -1,6 +1,8 @@
 import JobApplication from "../models/JobApplication.model.js";
 import JobPosting from "../models/jobPosting.model.js";
 import User from "../models/user.model.js";
+import mongoose from "mongoose";
+
 
 export const getStudentApplications = async (req, res) => {
   try {
@@ -194,7 +196,17 @@ export const updateOnCampusApplicationStatus = async (req, res) => {
   try {
     const { applicationId } = req.params;
     const { status } = req.body;
+    const allowedStatuses = ["applied", "in-review", "rejected", "accepted"];
 
+    // Validating the applicationId format
+    if (!mongoose.Types.ObjectId.isValid(applicationId)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid application ID"
+      });
+    }
+
+    // Validating the status presence
     if (!status) {
       return res.status(400).json({
         success: false,
@@ -202,6 +214,13 @@ export const updateOnCampusApplicationStatus = async (req, res) => {
       });
     }
 
+    // Validating the allowed status values
+    if (!allowedStatuses.includes(status)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid application status"
+      });
+    }
     const application = await JobApplication.findById(applicationId);
     if (!application) {
       return res.status(404).json({
@@ -236,6 +255,4 @@ export const updateOnCampusApplicationStatus = async (req, res) => {
     });
   }
 };
-
-
 
