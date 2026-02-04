@@ -172,16 +172,29 @@ export const jobList = async (req, res) => {
       
   
       if (skill) {
-        matchStage.requiredSkills = { $regex: `^${skill}$`, $options: "i" };
-      }
+        const escapedSkill = skill.replace(
+          /[.*+?^${}()|[\]\\]/g,
+          "\\$&"
+        );
+        matchStage.requiredSkills = {
+          $regex: `^${escapedSkill}$`,
+          $options: "i"
+        };
+      }      
   
       //Pagination validation
       const pageNum = Number(page);
       const limitNum = Number(limit);
   
-      if (pageNum < 1 || limitNum < 1 || limitNum > 50) {
+      if (
+        Number.isNaN(pageNum) ||
+        Number.isNaN(limitNum) ||
+        pageNum < 1 ||
+        limitNum < 1 ||
+        limitNum > 50
+      ) {
         return res.status(400).json({ message: "Invalid pagination values" });
-      }
+      }      
   
       const skip = (pageNum - 1) * limitNum;
       const totalJobs = await JobPosting.countDocuments(matchStage);
@@ -203,19 +216,31 @@ export const jobList = async (req, res) => {
           as: "jobApplications"
         }
       });
+      if (sortBy && sortBy !== "relevanceScore") {
+        return res.status(400).json({ message: "Invalid sort field" });
+      }
+      
       //validation of sort if given
-        if (order && !["asc", "desc"].includes(order)) {
-            return res.status(400).json({ message: "Invalid sort order" });
+      if (order && !["asc", "desc"].includes(order)) {
+        return res.status(400).json({ message: "Invalid sort order" });
         }
         
       // sortingg
+      // Sorting
       if (sortBy === "relevanceScore") {
         pipeline.push({
-          $sort: {
-            relevanceScore: order === "asc" ? 1 : -1
-          }
+        $sort: {
+            relevanceScore: order === "asc" ? 1 : -1,
+            _id: 1 // secondary stable sort
+        }
         });
-      }
+      } else {
+        // Default stable sort to ensure consistent pagination
+        pipeline.push({
+        $sort: { _id: 1 }
+        });
+    }
+    
   
       // Pagination
       pipeline.push({ $skip: skip });
