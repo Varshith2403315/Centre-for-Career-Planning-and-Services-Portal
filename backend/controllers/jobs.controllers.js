@@ -98,28 +98,149 @@ export const jobDelete = async (req, res) => {
 };
 
 
+// export const jobList = async (req, res) => {
+//     try {
+//         const jobPostings = await JobPosting.aggregate([{
+//             $lookup:{
+//                 from: "jobapplications",
+//                 localField: "_id",
+//                 foreignField: "jobId",
+//                 as: "jobApplications"
+//             }
+//         }]);
+//         res.status(200).json({
+//             message: 'Job postings retrieved successfully',
+//             jobs: jobPostings
+//         });
+//     } catch (error) {
+//         console.error("Error in jobList:", error);
+//         res.status(500).json({
+//             message: 'Error retrieving job postings',
+//             error: error.message
+//         });
+//     }
+// };
 export const jobList = async (req, res) => {
     try {
-        const jobPostings = await JobPosting.aggregate([{
-            $lookup:{
-                from: "jobapplications",
-                localField: "_id",
-                foreignField: "jobId",
-                as: "jobApplications"
-            }
-        }]);
-        res.status(200).json({
-            message: 'Job postings retrieved successfully',
-            jobs: jobPostings
+      //Extracting query params
+      const {
+        type,
+        company,
+        batch,
+        skill,
+        author,
+        page = 1,
+        limit = 10,
+        sortBy,
+        order
+      } = req.query;
+
+      const matchStage = {};
+  
+      // exact matches
+      if (type) {
+        if (!["on-campus", "off-campus"].includes(type)) {
+          return res.status(400).json({ message: "Invalid job type" });
+        }
+        matchStage.Type = type;
+      }
+  
+      if (batch) {
+        const batchNum = Number(batch);
+        if (isNaN(batchNum)) {
+          return res.status(400).json({ message: "Invalid batch" });
+        }
+        matchStage.batch = batchNum;
+      }
+  
+      if (author) {
+        matchStage.author = author;
+      }
+  
+      // partial matches
+      if (company) {
+        // escaping from regex characters
+        const escapedCompany = company.replace(
+          /[.*+?^${}()|[\]\\]/g,
+          "\\$&"
+        );
+        matchStage.Company = {
+          $regex: escapedCompany,
+          $options: "i"
+        };
+      }
+      
+  
+      if (skill) {
+        matchStage.requiredSkills = { $regex: `^${skill}$`, $options: "i" };
+      }
+  
+      //Pagination validation
+      const pageNum = Number(page);
+      const limitNum = Number(limit);
+  
+      if (pageNum < 1 || limitNum < 1 || limitNum > 50) {
+        return res.status(400).json({ message: "Invalid pagination values" });
+      }
+  
+      const skip = (pageNum - 1) * limitNum;
+      const totalJobs = await JobPosting.countDocuments(matchStage);
+      const totalPages = Math.ceil(totalJobs / limitNum);
+
+  
+      //Build aggregation pipeline
+      const pipeline = [];
+  
+      if (Object.keys(matchStage).length > 0) {
+        pipeline.push({ $match: matchStage });
+      }
+  
+      pipeline.push({
+        $lookup: {
+          from: "jobapplications",
+          localField: "_id",
+          foreignField: "jobId",
+          as: "jobApplications"
+        }
+      });
+      //validation of sort if given
+        if (order && !["asc", "desc"].includes(order)) {
+            return res.status(400).json({ message: "Invalid sort order" });
+        }
+        
+      // sortingg
+      if (sortBy === "relevanceScore") {
+        pipeline.push({
+          $sort: {
+            relevanceScore: order === "asc" ? 1 : -1
+          }
         });
+      }
+  
+      // Pagination
+      pipeline.push({ $skip: skip });
+      pipeline.push({ $limit: limitNum });
+  
+      //Execute query
+      const jobPostings = await JobPosting.aggregate(pipeline);
+  
+      res.status(200).json({
+        message: "Job postings retrieved successfully",
+        page: pageNum,
+        limit: limitNum,
+        totalJobs,
+        totalPages,
+        jobs: jobPostings
+      });
+        
     } catch (error) {
-        console.error("Error in jobList:", error);
-        res.status(500).json({
-            message: 'Error retrieving job postings',
-            error: error.message
-        });
+      console.error("Error in jobList:", error);
+      res.status(500).json({
+        message: "Error retrieving job postings",
+        error: error.message
+      });
     }
-};
+  };  
 
 
 // Helper function to check ObjectId validity
