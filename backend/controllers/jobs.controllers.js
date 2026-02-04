@@ -216,30 +216,26 @@ export const jobList = async (req, res) => {
           as: "jobApplications"
         }
       });
-      if (sortBy && sortBy !== "relevanceScore") {
-        return res.status(400).json({ message: "Invalid sort field" });
-      }
-      
       //validation of sort if given
+      if (sortBy && sortBy !== "relevanceScore") {
+          return res.status(400).json({ message: "Invalid sort field" });
+      }
+    
       if (order && !["asc", "desc"].includes(order)) {
-        return res.status(400).json({ message: "Invalid sort order" });
-        }
-        
-      // sortingg
-      // Sorting
+          return res.status(400).json({ message: "Invalid sort order" });
+      }
       if (sortBy === "relevanceScore") {
-        pipeline.push({
-        $sort: {
-            relevanceScore: order === "asc" ? 1 : -1,
-            _id: 1 // secondary stable sort
-        }
-        });
+          pipeline.push({
+          $sort: {
+              relevanceScore: order === "asc" ? 1 : -1,
+              _id: 1 
+          }
+          });
       } else {
-        // Default stable sort to ensure consistent pagination
-        pipeline.push({
-        $sort: { _id: 1 }
-        });
-    }
+          pipeline.push({
+          $sort: { _id: 1 }
+          });
+      }
     
   
       // Pagination
